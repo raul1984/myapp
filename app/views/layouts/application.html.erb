@@ -15,10 +15,10 @@
   </head>
 
   <body>
-  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navegacion">
     <div class="container-fluid">
       
-      <div class="nabar-header">
+      <div class="navbar-header" id="cabecera">
         <button type="button" 
                 class="navbar-toggle collapsed" 
                 data-toggle="collapse"
@@ -28,14 +28,15 @@
           <span class="incon-bar"></span>
           <span class="incon-bar"></span>
         </button>
+        <%= link_to "Delicias de la Jara", class:"navbar-brand"%>
       </div> <!--end navbar-header-->
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="">Home</a></li>
-          <li><a href="">Contact</a></li>
-          <li><a href="">About</a></li> 
-                                                  
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Product', products_path %></li>
+          <li><%= link_to 'Contact', static_pages_contact_path %></li>
+          <li><%= link_to 'About', static_pages_about_path %></li>
         </ul>
       </div>
     </div>
@@ -43,10 +44,11 @@
 
     <%= yield %>
 
-    <footer  id="copyright-navbar">
-      <h5 id="copyright">&copy Berlin Bikes 2017</h5>
+    <footer  id="footer">
+      <h5 id="copyright">&copy Delicias de la Jara 2017</h5>
     </footer>
  
+
 
   </body>
 </html>
