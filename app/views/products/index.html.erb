@@ -2,8 +2,16 @@
 
 <h1>Products</h1>
 
+<div class="container-fluid">
+  <div class="row">
+    <% @products.each do |product| %>
+      <%= render partial: "shared/product", locals: {product: product} %>
+    <% end %>
+  </div> <!--end row-->
+</div> <!-- end container-->
 
-<div class="container-fluid" id="product-wrapper">
+
+<!--<div class="container-fluid" id="product-wrapper">
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-sm-2 col-md-4">
@@ -14,12 +22,12 @@
         <p> Price: &euro;<%= product.price %></p>
         <p> Color: <%= product.color %></p>
         <p><%= truncate(product.description) %></p>
-        <br>
+        <br> 
         <%= link_to 'Show', product, class:'btn btn-primary btn-xs' %>
         <%= link_to 'Edit', edit_product_path(product), class:'btn btn-primary btn-xs' %>
         <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger btn-xs' %>
-      </div><!-- /col -->
-    <% end %>
+      </div> 
+    <% end %> 
     <%= link_to 'New Product', new_product_path %>
 
   </div>
