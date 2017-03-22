@@ -1,55 +1,66 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-body {
-	line-height: 1.5em;
-	font-size: 1.5rem;
+
+h1,
+h2 {
+  font-family: Helvetica, Arial, Sans Serif;
+  color: #184161;
+  text-align: center;
 }
 
-h1 {
-	font-family:helvetica;
-	color:blue;
-	text-align:center;
-	padding-top:1.5em;
+.image-row {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 2em 0;
 }
 
-
-/****** navbar *****/
-
-
-
-.navbar{
-	background-color: blue;	
+.contact-info {
+  text-align: center;
+  padding: 2em 0;
 }
 
-
-
-.navbar-inverse .navbar-nav>li>a {
-    color: white;
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    font-weight: 800px;
+main {
+  padding: 2em;
 }
 
-.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: black;
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
 }
 
-
-
-/****** navbar *****/
-
-#footer{
-	color: white;
-	float: center;
-	padding: 10px;
-
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-left {
+  color: #D2D7D9;
 }
 
-#footer-navbar{	
-	width: 100%;	
-	position: fixed;
-	bottom: 0px;
-	background-color: black;
-	font-family:Arial, sans-serif;
+.carousel-caption {
+  position: relative;
+  color: #858F93;
+  text-shadow: none;
+  font-size: 2em;
+  right: auto;
+  left: auto;
+}
+
+.carousel-indicators li {
+  background-color: #858F93;
+  padding: 3px;
+  border: none;
+}
+
+.carousel-indicators .active {
+  background-color: #D2D7D9;
+}
+
+.carousel-image {
+  height: 550px;
+  max-height: 550px;
+  width: auto;
+  margin: auto;
+}
+
+a:hover {
+  text-decoration: none;
 }
