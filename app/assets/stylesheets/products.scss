@@ -2,18 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-table {
-  width: 80%;
-  margin: 20px;
+.product-box {
+	margin: 0 auto;
 }
 
-.new-product {
-  margin-bottom: 20px;
-  margin-left: 20px
+.product-description {
+	color: black;
+	margin: 20px 0 0 0;
+	width: 100%;
+	padding: 10px;
+	font-family: serif;
+	font-style: bold;
 }
 
-.product-overview {
-  margin: 40px 0;
-  float: left;
-  height: 430px;
+.product-color {
+	font-family: serif;
+	font-style: italic;
+	font-size: 1.8em;
+	padding: 10px;
+}
+
+.product-image img{
+	max-height: 400px;
+}
+
+
+
+.product-item {
+	min-height: 800px;
+	background-color: #fff;
+	border: 2px solid #ececec;
+	box-shadow: 4px 4px 7px 0px #dddddd;
+	margin: 5px;
+	padding: 10px;
+}
+
+.product-name {
+	width: 100%;
+	margin: 0;
+	font-weight: bold;
+	color: #58e3b5;
+	font-family: 'Oleo Script', sans-serif;
+}
+
+.product-price {
+	text-align: center;
+	color: #ffc9c9;
+	font-size: 3em;
+	font-family: 'Oleo Script', sans-serif;
+}
+
+.edit-product {
+	margin: 20px 0 0 0;
+	font-size: 1em;
+	text-align: center;
+}
+
+.edit-window {
+	background-color: #e7e7e7;
+	border: 1px solid #dddddd;
+	padding: 10px;
+	width: 795px;
 }

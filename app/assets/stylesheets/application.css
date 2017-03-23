@@ -35,6 +35,17 @@ html, body {
   background-color: #D2D7D9;
 }
 
+.navbar-nav li {
+  padding: 5px;
+  display: inline;
+  font-family: sans-serif;
+  font-style: bold;
+  font-size: 1.5em; 
+  margin-left: 20px;
+  margin-top:15px;
+
+}
+
 .navbar-brand {
   padding: 0px;
 }
@@ -46,7 +57,7 @@ html, body {
 }
 
 li {
-  font-family: ribeye, Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
   padding: 15px 20px;
   color: #184161;
   font-size: 16px;

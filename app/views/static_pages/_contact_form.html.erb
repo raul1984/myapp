@@ -1,0 +1,23 @@
+<%= form_tag("/contact", method: "get", :class => "form-class") do %>
+  <div class="form-group col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-6">
+      <%= label_tag("Name") %>
+      <%= text_field_tag("post", "Enter your name", :class => "form-control") %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= label_tag("Phone") %>
+      <%= text_field_tag("post", "Enter your phone", :class => "form-control") %>
+    </div>
+     <div class="col-xs-12 col-sm-6">
+      <%= label_tag("Mail") %>
+      <%= text_field_tag("post", "Enter your e-mail", :class => "form-control") %>
+    </div>
+    <div class="col-xs-12 col-sm-12">
+      <%= label_tag("Message") %>
+      <%= text_area_tag("post", "", :class => "form-control", col: 20, rows: 10) %>
+    </div>
+    <div class="col-xs-12">
+      <%= submit_tag("Send", :class => "btn btn-primary") %>
+    </div>
+  </div>
+<% end %>

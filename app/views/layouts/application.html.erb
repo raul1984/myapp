@@ -33,13 +33,47 @@
 
           <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Home', static_pages_landing_page_path %></li>
+              <li class="nav-item"> <button type="button" class="btn btn-primary btn-md navbar-right" data-toggle="modal" data-target="#myModal">
+              Login </button> 
+              </li>
+              <li><%= link_to 'Home', root_path %></li>
               <li><%= link_to 'Productos', products_path %></li>
               <li><%= link_to 'Contacto', static_pages_contact_path %></li>
               <li><%= link_to 'Sobre mi', static_pages_about_path %></li>
             </ul>
+             <%= form_tag("/products", method: "get", :class => "navbar-form") do %>
+              <div class="form-group">
+                <%= text_field_tag(:q, nil, :class => "form-control") %>
+              
+                <%= submit_tag("Search", :class => "btn btn-default") %>
+              </div>
+            <% end %>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>
+                    <h4 class="modal-title" id="myModalLabel">Customer Login</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_tag("/login", method: "get") do %>
+                      <%= label_tag(:q, "Username") %>
+                      <%= text_field_tag(:q) %>
+                      <%= label_tag(:q, "Password") %>
+                      <%= text_field_tag(:q) %>
+                      <%= submit_tag("Login", :class => "btn btn-primary col-xs-12") %>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>   
+                </div>
+              </div>
+            </div>  
           </div>
-        </div>
+        </div>    
       </nav>  
 
       <div class="content">
