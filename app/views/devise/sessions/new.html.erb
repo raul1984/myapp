@@ -1,0 +1,29 @@
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: session(resource_name), :html => {:class => "form-signin"}) do |f| %>
+    <h2 class="form-signin-heading">Log in</h2>
+    <div class="field">
+      <%= f.label :email, :class => 'sr-only', :for => 'inputEmail' %><br />
+      <%= f.email_field :email, autofocus: true, :class => "form-control", :type => "email",  :required => true, :autofocus => true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, :class => 'sr-only' %><br />
+      <%= f.password_field :password, autocomplete: "off", :class => "form-control", :type => "password", :required => true %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="field checkbox">
+        <label>
+          <%= f.check_box :remember_me %>
+          Remember me
+        </label>
+      </div>
+    <% end -%>
+
+    <div class="actions">
+      <%= f.submit "Log in", :class => "btn btn-primary btn-block" %>
+    </div>
+    <%= render "devise/shared/links" %>
+  <% end %>
+
+</div>
