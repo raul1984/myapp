@@ -87,10 +87,14 @@
             </div>  
           </div>
         </div>    
-      </nav>  
-            <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
 
+      </nav> 
+      <% if notice %>
+        <p class="notice alert alert-info"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-info"><%= alert %></p>
+      <% end %>    
       <div class="content">
         <%= yield %>
       </div >  
