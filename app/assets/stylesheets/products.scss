@@ -2,21 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.product-show-wrapper {
+	background-color: white;
+	border: 2px solid #ececec;
+	box-shadow: 4px 4px 7px 0px #dddddd;
+}
+
 .product-box {
-	margin: 0 auto;
+	padding: 5px;
 }
 
 .product-description {
 	color: black;
-	margin: 20px 0 0 0;
-	width: 100%;
 	padding: 10px;
-	font-family: serif;
+	font-family: 'Archivo Narrow', serif;
 	font-style: bold;
 }
 
 .product-color {
-	font-family: serif;
+	font-family: 'Archivo Narrow', serif;
 	font-style: italic;
 	font-size: 1.8em;
 	padding: 10px;
@@ -38,11 +42,10 @@
 }
 
 .product-name {
-	width: 100%;
-	margin: 0;
 	font-weight: bold;
 	color: #58e3b5;
 	font-family: 'Oleo Script', sans-serif;
+	font-size: 3em;
 }
 
 .product-price {
@@ -63,4 +66,25 @@
 	border: 1px solid #dddddd;
 	padding: 10px;
 	width: 795px;
+}
+
+.rated {
+	padding-left: 30px;
+}
+
+.rating {
+	padding: 30px;
+}
+
+.review-container {
+	display: none;
+}
+
+h4 a {
+	color: blue;
+}
+
+h4 a:hover {
+	background-color: white;
+	color: blue;
 }
