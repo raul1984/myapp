@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+  before_action :authenticate_user!, only: [:create]
+  before_filter :authorize_admin, only: [:destroy]
   
   def index
     
@@ -34,5 +35,10 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:user_id, :body, :rating)
     end
-  
+
+     def authorize_admin
+    return unless !current_user.admin?
+    redirect_to root_path, :alert => "Only admins can delete comments"
+    end
 end
+  

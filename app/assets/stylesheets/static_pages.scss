@@ -2,69 +2,48 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1,
-h2 {
-  font-family: Helvetica, Arial, Sans Serif;
-  color: #184161;
-  text-align: center;
-}
+//////////////////////static pages index //////////////////////////////
+/*cover image*/
+.img-cover {
+  border-radius: 5px;
+  width: 70%;
 
-.image-row {
-  max-width: 80%;
+  /*centering image*/
+  display: block;
   margin: 0 auto;
-  padding: 2em 0;
+
 }
 
-.contact-info {
+
+////////////////////// products index styles ////////////////////////////
+// featured products carousel
+
+.featured {
+  width: 100%;
+  background-image: url("berlin-bike-routes.jpg");
+  border-bottom: 1px solid #97a6aa;
+  background-attachment: fixed;
+}
+.carousel-control { color: #ff005a;}
+
+a.right.carousel-control, 
+a.left.carousel-control {background:none;}
+
+.carousel-inner {
+  border: 5px solid #fbfbfb;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.caption {
+  color: #ff005a;
   text-align: center;
-  padding: 2em 0;
+  font-size: 1.5em;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
 }
 
-main {
-  padding: 2em;
-}
+////////////////// thank you page///////////////////////////////////////////////////
 
-.carousel-control.left,
-.carousel-control.right {
-  background-image: none;
-}
-
-.carousel-control .glyphicon-chevron-right,
-.carousel-control .icon-next,
-.carousel-control .glyphicon-chevron-left {
-  color: #D2D7D9;
-}
-
-.carousel-caption {
-  position: relative;
-  color: #858F93;
-  text-shadow: none;
-  font-size: 2em;
-  right: auto;
-  left: auto;
-}
-
-.carousel-indicators li {
-  background-color: #858F93;
-  padding: 3px;
-  border: none;
-}
-
-.carousel-indicators .active {
-  background-color: #D2D7D9;
-}
-
-.carousel-image {
-  height: 550px;
-  max-height: 550px;
-  width: auto;
-  margin: auto;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-.btn {
-  margin-top: 5px;
+.alert_thankyou {
+  margin-top: 200px;
 }

@@ -1,109 +1,209 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Myapp</title>
-    
+<head>
+  <title>BikeBerlin</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Indie+Flower:400,700' %>
+  <%= javascript_include_tag 'application' %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%= favicon_link_tag 'favicon.png' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+</head>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body>
+      
+  <div id="wrap">
 
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-  	<div class="page-container">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="incon-bar"></span>
-              <span class="incon-bar"></span>
-              <span class="incon-bar"></span>
-            </button>
-        
-            <a class="navbar-brand">
-              <%= link_to(image_tag("Logo.jpg", id: "logo"), static_pages_index_path) %>
-            </a>
-          </div> <!--end navbar-header-->
-
-          <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item"> <button type="button" class="btn btn-primary btn-md navbar-right" data-toggle="modal" data-target="#myModal">
-              Login </button> 
-              </li>
-              <li><%= link_to 'Home', root_path %></li>
-              <li><%= link_to 'Productos', products_path %></li>
-              <li><%= link_to 'Contacto', static_pages_contact_path %></li>
-              <li><%= link_to 'Sobre mi', static_pages_about_path %></li>
-
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "Logout", destroy_user_session_path, :method => :delete%>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "Register", new_user_registration_path %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "Login", new_user_session_path %>  
-                </li>
+  <!-- ==================== -->
+  <!-- Navigation comes now -->
+  <!-- ==================== -->
+  <!-- Collect the nav links, forms, and other content for toggling -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand brand page-scroll" href="#page-top"><span class="logo">BB</span></a>
+          <span id="search-box-xs">
+            <%= form_tag("/products", method: "get") do %>
+              <%= label_tag(:q, "Search for:", class: "hidden") %>
+              <%= text_field_tag(:q, "", placeholder: "  Search", class: "search-xs") %>
+              <%= button_tag(type: 'submit') do %>
+                <span class="glyphicon glyphicon-search icon-search"></span>
               <% end %>
-            </ul>
-             <%= form_tag("/products", method: "get", :class => "navbar-form") do %>
-              <div class="form-group">
-                <%= text_field_tag(:q, nil, :class => "form-control") %>
-              
-                <%= submit_tag("Search", :class => "btn btn-default") %>
-              </div>
+            <% end %>
+          </span>
+        </div> 
+        
+        <!-- /.nav-header -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li id="main-nav-home"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
+              <%= link_to "Home", static_pages_index_path %>
+            </li>
+            <li id="main-nav-shop"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
+              <%= link_to "Shop", products_path %>
+            </li>
+            <li id="main-nav-orders-about"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
+              <%if user_signed_in? %>
+                <%= link_to "Orders" %></li>
+              <% else %>
+                <%= link_to "About", static_pages_about_path %>
+              <% end %>
+            </li>
+            <li id="main-nav-users-contact"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
+              <% if signed_in? && current_user.admin? %>
+                <%= link_to "Users", users_path %>
+              <% else %>
+                <%= link_to "Contact", static_pages_contact_path %>
+              <% end %>
+            </li>
+          
+            <li id="search-box">
+              <%= form_tag("/products", method: "get") do %>
+                <%= label_tag(:q, "Search for:", class: "hidden") %>
+                <%= text_field_tag(:q, "", placeholder: "  Search for bikes", class: "search-xl") %>
+                <%= button_tag(type: 'submit', class: "btn btn-search-color") do %>
+                  <span class="glyphicon glyphicon-search icon-search"></span>
+                <% end %>
+              <% end %>
+            </li>
+            <li id="sm-login-out">
+              <% if user_signed_in? %>
+                <a>Hello 
+                  <% if current_user.admin? %>
+                  Admin
+                  <% else %>
+                    <% if current_user.first_name.present?%>
+                      <%= current_user.first_name %>
+                    <% else %>
+                      <%= current_user.email %> 
+                    <% end %>
+                  <% end %>
+                </a>          
+              <% end %>
+            </li>
+            <li id="sm-login-out">
+              <% if user_signed_in? %>
+              <a>|</a>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
+              <li class="dropdown">
+                <a href="#" id="dropskills" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
+                  <i class="glyphicon glyphicon-cog setting-comp"></i>
+                  <span class="setting-mob">Settings</span>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" arialabelledby="settings">
+                  <li><%= link_to 'See my profile', user_path(current_user) %></li>
+                  <li><%= link_to 'Edit my profile', edit_user_path(current_user) %></li>
+                  <li><%= link_to'My login details', edit_registration_path(current_user) %></li>
+                </ul>
+              </li>    
+            <% else %>
+              <li>
+                <%= link_to('Sign up', new_user_registration_path) %>
+              </li>
             <% end %>
 
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>
-                    <h4 class="modal-title" id="myModalLabel">Customer Login</h4>
-                  </div>
-                  <div class="modal-body">
-                    <%= form_tag("/login", method: "get") do %>
-                      <%= label_tag(:q, "Username") %>
-                      <%= text_field_tag(:q) %>
-                      <%= label_tag(:q, "Password") %>
-                      <%= text_field_tag(:q) %>
-                      <%= submit_tag("Login", :class => "btn btn-primary col-xs-12") %>
-                    <% end %>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>   
-                </div>
+            <!-- will display only in @media (min-width: 768px) and (max-width: 900px) -->
+            <li class= "dropdown" id="btn-menu">
+              <a id="dropmenu" class="page-scroll" href="#" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">MENU <span class="caret"></span></a>
+              <ul class="dropdown-menu" arialabelledby="dropmenu">
+                <li>
+                  <%= link_to "Home", static_pages_index_path %>
+                </li>
+                <li>
+                  <%= link_to "Shop", products_path %>
+                </li>
+                <%if user_signed_in? %>
+                  <li><%= link_to "Orders" %></li>
+                <% else %>
+                  <li><%= link_to "About", static_pages_about_path %></li>
+                <% end %>
+                <li>
+                  <% if signed_in? && current_user.admin? %>
+                    <%= link_to "Users", users_path %>
+                  <% else %>
+                    <%= link_to "Contact", static_pages_contact_path %>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <!-- /will display only in @media (min-width: 768px) and (max-width: 900px) -->
+            <li id="sm-login-out">
+              <div class="btn btn-default btn-login">
+                <% if user_signed_in? %>
+                 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                <% else%>
+                  <%= link_to('Login', new_user_session_path) %>
+                <% end %> 
               </div>
-            </div>  
-          </div>
-        </div>    
+            </li>
+          </ul>
+      
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    <!-- /.navbar -->
+    <!-- /////////////// -->
+    <!-- Navigation ends -->
+    <!-- /////////////// -->
 
-      </nav> 
-      <% if notice %>
-        <p class="notice alert alert-info"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-info"><%= alert %></p>
-      <% end %>    
-      <div class="content">
-        <%= yield %>
-      </div >  
+    <!-- alerts and notices -->
     
-      <footer  id="footer">
-        <div class="container-fluid">
-          <p>&copy Delicias de la Jara 2017</p>
+    <%if notice%>
+      <p id="notice" class="alert top-page alert-info center"><%= notice %></p>
+    <% end %>
+    <% if alert%>
+      <p id ="alert" class="alert top-page alert-danger center"><%= alert %></p>
+    <% end %>
+
+    <!--/ alerts and notices -->
+
+    <%= yield %>
+
+
+ 
+
+    <div class="container top-page xs-login-out">
+      <div class="row">
+        <div class="center">
+          <% if user_signed_in? %>
+            <font color="red">Hello
+              <% if current_user.first_name.present?%>
+                <%= current_user.first_name %>
+              <% else %>
+                <%= current_user.email %> 
+              <% end %>
+            </font>          
+          <% end %>
         </div>
-      </footer>
-    </div><!--end page container-->
-  </body>
+        
+        <div class="btn btn-default btn-login col-xs-6" style="margin-left: 25%">
+          <% if user_signed_in? %>
+            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          <% else%>
+            <%= link_to('Login', new_user_session_path) %>
+          <% end %> 
+        </div><!-- /.btn -->
+      </div><!-- /.row -->
+    </div><!-- /.container login and out for small viewports-->
+  </div><!-- /#wrap -->
+  
+  <footer>
+    <div class="container copyright">&copy; 2016 Bike Berlin</div>
+  </footer>
+</body>
 </html>
