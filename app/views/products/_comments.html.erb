@@ -1,7 +1,6 @@
 <div class="product-reviews">
-    <% if @comments %>
+    
     <% @comments.each do |comment| %>
-    <% end %>
         <div class="row">
             <hr>
             <p><%= comment.user.first_name %> <small><em><%= "#{time_ago_in_words(comment.created_at)} ago" %></em></small>
@@ -12,11 +11,7 @@
             <p><%= comment.body %></p>   
         </div>
     <% end %>
-   
-    <div class="flickr_pagination">
-     <% if @comments %>
+    <div class="apple_pagination">
       <%= will_paginate @comments %>
-      <% end %>
-
     </div>
 </div>

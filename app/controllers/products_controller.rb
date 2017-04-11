@@ -1,12 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /products
   # GET /products.json
-  def index #Esto une app/views/products/index.html.erb
-   if Rails.env.development?
+  def index #this matches app/views/products/index.html.erb
+    if Rails.env.development?
       if params[:q]
         search_term = params[:q]
         @products = Product.where("name LIKE ?", "%#{search_term}%")
@@ -23,15 +21,11 @@ class ProductsController < ApplicationController
     end
     @products_featured = Product.limit(3)
   end
-    
-  end
 
   # GET /products/1
   # GET /products/1.json
-  def show #Esto une app/views/products/show.html.erb
-    
-    @comments = @product.comments.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
-    
+  def show #this matches app/views/products/show.html.erb
+    @comments = @product.comments.order("created_at DESC").paginate(:page =>params[:page], :per_page=>3)
   end
 
   # GET /products/new
@@ -91,5 +85,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :image_url, :color, :price)
+      params.require(:product).permit(:name, :category, :description, :image_url, :color, :price)
     end
+end
