@@ -1,25 +1,41 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /products
   # GET /products.json
-  def index
-    if params[:q]
-      search_term = params[:q]
-      @products = Product.search(search_term)
+  def index #Esto une app/views/products/index.html.erb
+   if Rails.env.development?
+      if params[:q]
+        search_term = params[:q]
+        @products = Product.where("name LIKE ?", "%#{search_term}%")
+      else
+        @products = Product.all
+      end 
     else
-      @products = Product.all
+      if params[:q]
+        search_term = params[:q]
+        @products = Product.where("name ilike ?", "%#{search_term}%")
+      else
+        @products = Product.all
+      end
     end
+    @products_featured = Product.limit(3)
+  end
+    
   end
 
   # GET /products/1
   # GET /products/1.json
-  def show
-        @comments = @product.comments.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+  def show #Esto une app/views/products/show.html.erb
+    
+    @comments = @product.comments.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+    
   end
 
   # GET /products/new
-  def new
+  def new #this matches app/views/products/new.html.erb
     @product = Product.new
   end
 
@@ -34,7 +50,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path, notice: 'Producto fue creado satisfactoriamente.' }
+        format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -77,4 +93,3 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :image_url, :color, :price)
     end
-end

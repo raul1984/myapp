@@ -1,31 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div class="container top-page">
 
-<div class="container product-show-wrapper">
+
+  <h1>Product details</h1>
+  <hr>
   <div class="row">
-    <div class="col-xs-12 col-sm-8 product-box">
-      <p class="product-name">
+    <div class="col-xs-12 col-sm-6">
+      <font color="red">
+        <h4>Name</h4>
+      </font>
+      <p>
         <%= @product.name %>
       </p>
-      
-      <p class="product-description">
-        <%= @product.description %>
-      </p>
-      <p class="product-price col-xs-12">
-        <%= @product.price %> €
-      </p>
-      <p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> </p>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <p class="product-image">
-        <%= image_tag(@product.image_url, class: "img-responsive") %>
-      </p>
-    </div>
-  
-  </div>
-  <%= render "new_comment" %>
-  <%= render "comments" %>
-  
-</div>
+     <font color= "red">
+       <h4>Description</h4>
+     </font>
 
-<%= link_to 'Edit', edit_product_path(@product), class:'btn btn-primary' %> |
-<%= link_to 'Back', products_path, class:'btn btn-primary' %>
+     <p>
+       <%= @product.description %>
+     </p>
+
+     <!--<font color= "red">
+        <h3>Image Url</h3>
+     </font>
+     <h4>
+       <%= @product.image_url %>
+     </h4>-->
+  
+
+      <font color= "red">
+        <h4>Color</h4>
+      </font>
+
+      <p>
+        <%= @product.color %>
+      </p>
+
+      <font color= "red">
+        <h4>Price</h4>
+      </font>
+
+      <p>
+        <strong><%= @product.price %> € </strong>
+      </p>
+      <br>
+      <hr>
+      <p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> 
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= image_tag(@product.image_url, class: "img-thumbnail img-responsive img-rounded")%>  
+      <br>
+      <div id="add-reviews">
+        <%= render 'new_comment' %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="ratings">
+        <%= render 'comments' %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+  <% end %>
+  <%= link_to 'Back', products_path %>
+</div>

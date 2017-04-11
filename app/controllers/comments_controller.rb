@@ -2,13 +2,14 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    
+
   end
 
   def create
     @product = Product.find(params[:product_id])
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
+    @comments = @product.comments
     
     respond_to do |format|
       if @comment.save

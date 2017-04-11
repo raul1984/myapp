@@ -2,248 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*body background*/
+//////////////////////static pages index //////////////////////////////
+/*cover image*/
+.img-cover {
+  border-radius: 5px;
+  width: 70%;
 
-body {
-  position: relative;
-  background-size: 100% 100%;
-  background-repeat: repeat;
-  min-height: 100%;
+  /*centering image*/
+  display: block;
+  margin: 0 auto;
+
 }
 
-body::after {
-  content: "";
-  background: url('http://www.berlinwelcomes.com/wp-content/uploads/2012/04/BerlinBikeShop.jpg') no-repeat center center;
-  background-size:cover;
-  opacity: 0.05;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  -webkit-filter: grayscale(1); /* Old WebKit */
-  filter: grayscale(1);
-}
 
-/*navigation bar*/
+////////////////////// products index styles ////////////////////////////
+// featured products carousel
 
-.navbar-nav>li>a {
-  text-transform: uppercase;
-}
-
-.navbar-default .navbar-nav>li>a:hover {
- color: #c52d06;
- background-color: #ccc;
- transition: color 600ms;
- -webkit-transition: color 600ms;
-}
-
-.navbar-default .navbar-nav>li>a {
-  letter-spacing:0.5em;
-}
-
-.navbar-header {
+.featured {
   width: 100%;
+  border-bottom: 1px solid #97a6aa;
+}
+.carousel-control { color: #ff005a;}
+
+a.right.carousel-control, 
+a.left.carousel-control {background:none;}
+
+.carousel-inner {
+  border: 5px solid #fbfbfb;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.navbar-brand {
-  padding: 10px 10px;
-  margin-left: auto;
-}
-
-.navbar-default {
-  background-color: #f7f7f7;
-  border-color: black;
-  padding-left: 0;
-}
-
-/*.navbar-space {
-  margin-top: 53px
-}*/
-
-.navbar-brand#brand-text {
-  margin-left: 300px;
-}
-
-.txt-title {
-  margin-left: 0.5%;
-  letter-spacing:0.8em;
-  text-transform: uppercase;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  float: left;
+.caption {
+  color: #ff005a;
   text-align: center;
-  width: 40%;
-  text-transform: bold;
+  font-size: 1.5em;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
 }
+.product-length { height: 600px; }
+////////////////// thank you page///////////////////////////////////////////////////
 
-.dropdown-menu { min-width: 0px;}
-
-#logo:hover {
-  content:url(image-path('bike_bears_s3_b.png'));
-  width: auto;
-  height: auto;
-  margin-bottom: -50px;
-  background-color: transparent;
-}
-
-.navbar-default .navbar-brand {
-  color: #c52d06;
-}
-
-.navbar-default .navbar-brand:hover {
-  color: black;
-  text-decoration: none;
-  font-variant: bold;
-  transition: color 600ms;
-  -webkit-transition: color 600ms;
-  font-style: bold;
-  letter-spacing:0.8em;
-  background-color: rgba(200,97,99,1);
-}
-
-.dropdown-menu {
-  text-transform: uppercase;
-  letter-spacing:0.4em
-}
-
-/*main section*/
-
-.main {
-  padding-top: 1%;
-  padding-left: 16%;
-  padding-right: 14%;
-  padding-bottom: 28%;
-}
-
-/*index*/
-.deals {
-  padding: 30px 0;
-}
-
-.container {
-  padding-left: auto;
-  margin-left: 10px;
-}
-
-.big-bear-img {
-  content:url(image-path('big-bear.png'));
-  position: fixed;
-  margin-left: -240px;
-}
-
-.big-bear-img2 {
-  content:url(image-path('big-bear2.png'));
-  position: fixed;
-  margin-left: -242px;
-}
-
-
-/* footer */
-.site-footer {
-  text-align: center;
-  padding: 15px 0;
-  opacity: 0.9;
-}
-
-
-/*contact*/
-
-.contact {
- text-align: center;
-}
-
-.index {
-  border-left: 1%;
-  text-align: center;
-}
-
-/* about */
-.about {
-  border-left: 1%;
-}
-
-input#search-input,
-input#name,
-input#email,
-input#comment_rating,
-textarea#message.form-control,
-textarea#comment_body {
-  background-color: transparent;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    border-bottom-color: #000;
-    font-style: italic;
-}
-
-input#comment_rating,
-textarea#comment_body {
-  background-color:#eaeaea;
-  font-style: normal;
-}
-
-form.form-signin { padding-top: 30% }
-
-.form-control {
-  box-shadow: 0;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-}
-
-form {
-  text-align: left;
-}
-
-button.btn-default {
-  text-align: right;
-}
-
-@media (min-width: 917px) {
-  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-    margin-left: 0;
-  }
-  .container {
-    width: auto;
-  }
-}
-
-
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .txt-title {
-    width: 53%;
-  }
-  .carousel-caption {
-    position: absolute;
-    width: 0;
-    margin-left: 0;
-    top: 2%;
-    left: 2%;
-    color: white;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-family:Arial;
-    text-transform:uppercase;
-    font-weight:700;
-    letter-spacing:0em;
-    line-height:1.6;
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 999px) {
-  .txt-title {
-    width: 45%;
-    font-size: 14px;
-  }
-  .navbar-nav {
-    font-size: 13px;
-  }
-  .dropdown-menu {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-  }
-  .form {
-    padding-right: 0px;
-  }
+.alert_thankyou {
+  margin-top: 200px;
 }

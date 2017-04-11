@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!#, :except => [:show, :index]
   load_and_authorize_resource
   # GET /users
   # GET /users.json
@@ -15,11 +15,11 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -70,8 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-
-      params.require(:user).permit(:first_name, :last_name, :email, :password)
-
+      params.require(:user).permit(:first_name, :last_name)
     end
 end

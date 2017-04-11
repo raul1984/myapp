@@ -2,92 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.product-show-wrapper {
-	background-color: white;
-	border: 2px solid #ececec;
-	box-shadow: 4px 4px 7px 0px #dddddd;
+#product_index { height: 600px; }
+.btn-details { 
+	background-color: #ffb2b2;
+	color: red;
+	margin: 1px red;
+	&:hover{
+		background-color: red;
+		color: #ffffff;
+	}
 }
 
-.product-box {
-	padding: 5px;
-}
-
-.product-description {
-	color: black;
-	padding: 10px;
-	font-family: 'Archivo Narrow', serif;
-	font-style: bold;
-}
-
-.product-color {
-	font-family: 'Archivo Narrow', serif;
-	font-style: italic;
-	font-size: 1.8em;
-	padding: 10px;
-}
-
-.product-image img{
-	max-height: 400px;
-}
-
-
-
-.product-item {
-	min-height: 800px;
-	background-color: #fff;
-	border: 2px solid #ececec;
-	box-shadow: 4px 4px 7px 0px #dddddd;
-	margin: 5px;
-	padding: 10px;
-}
-
-.product-name {
-	font-weight: bold;
-	color: #58e3b5;
-	font-family: 'Oleo Script', sans-serif;
-	font-size: 3em;
-}
-
-.product-price {
-	text-align: center;
-	color: #ffc9c9;
-	font-size: 3em;
-	font-family: 'Oleo Script', sans-serif;
-}
-
-.edit-product {
-	margin: 20px 0 0 0;
-	font-size: 1em;
-	text-align: center;
-}
-
-.edit-window {
-	background-color: #e7e7e7;
-	border: 1px solid #dddddd;
-	padding: 10px;
-	width: 795px;
-}
-
-.rated {
-	padding-left: 30px;
-}
-
-.rating {
-	padding: 30px;
-}
-
-.review-container {
-	display: none;
-}
-
-h4 a {
-	color: blue;
-}
-
-h4 a:hover {
-	background-color: white;
-	color: blue;
-}
 
 .apple_pagination {
   background: #f1f1f1;

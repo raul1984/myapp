@@ -1,35 +1,40 @@
-<h2>Featured Products</h2>
+<div class="featured">
+  <div class="container top-page">
+    <h1>Featured Products</h1><br>
+    <center>
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% @products_featured.each do |product| %>
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <% end %>
+        </ol>
 
-<%= params[:example_key].to_i * 10 %>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% @products.each do |product| %>
-    <li data-target="#carousel-example-generic" data-slide-to="<% @products.find_index %>" class="<%= "active" if product == @products.first %>"></li>
-    <% end %>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <% @products.each do |product| %>
-      <div class="item<%= " active" if product == @products.first %>">
-        <%= image_tag(product.image_url, class: "img-responsive carousel-image") %>
-        <div class="carousel-caption">
-            <%= link_to product.name, product %>
+        <!-- Wrapper for slides -->   
+        <div class="carousel-inner" role="listbox">     
+          <% @products_featured.each do |product| %>     
+            <div class="item<%= " active" if product == @products_featured.first %>">
+              <%= image_tag(product.image_url, class: "img-responsive")%>    
+              <div class="carousel-caption">         
+                <p class="caption"><%= product.name %></p>      
+              </div>         
+            </div>     
+          <% end %>   
         </div>
-      </div> <!--end item--> 
-    <% end %>
+
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </center>
   </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-
+  <br>
 </div>
