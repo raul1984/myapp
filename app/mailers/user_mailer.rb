@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
 
     def welcome_email(user)
     mail(:to => user.email,
-      :subject => "Welcome to BikeNuremberg!")
+      :subject => "Welcome to Delicias de la Jara!")
   end
 end
 
