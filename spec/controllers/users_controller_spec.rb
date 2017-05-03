@@ -1,57 +1,38 @@
 require 'rails_helper'
 
 describe UsersController, :type => :controller do
-	
-	let(:user) { User.create(email: "peter@example.com", password: "123456")}
-	let(:user2) { User.create(email: "next@email.net", password: "123pass")}
+  let(:user) { FactoryGirl.create(:user)}
+  let(:diffrent_user) {FactoryGirl.create(:user)}
 
-	describe 'GET #show' do
+  describe 'GET #show' do
+    context 'User is logged in' do 
+      before do
+        sign_in user
+      end
 
-		context 'User is logged in' do
-			before do
-				sign_in user
-			end
+      it "loads correct user details" do
+        get :show, params: {id: user.id}
+        expect(response).to have_http_status(200)
+        expect(assigns(:user)).to eq user
+      end
+    end
 
-			it 'loads correct user details' do
+    context 'No user is logged in' do
+      it 'requires to login' do
+        get :show, params: {id: user.id}
+        expect(response).to redirect_to(root_path)
+      end
+    end
 
-				get :show, id: user.id
-				expect(response).to have_http_status(200)
-				expect(assigns(:user)).to eq user	
-			end
-		end
+    context 'User tries to GET #show from diffrent user' do
+      before do
+        sign_in diffrent_user
+      end
 
-		context 'No user is logged in' do
-			it "redirects to login" do
-				get :show, id: user.id
-				expect(response).to redirect_to(root_path)
-			end
-		end
-
-		context 'When show page from other user' do
-			before do
-				sign_in user
-			end
-
-			it 'redirects to root' do
-				get :show, id: user2.id
-				expect(response).to redirect_to(root_path)
-				expect(response).to have_http_status(302)
-				expect(assigns(:user)).not_to eq user						
-			end			
-		end
-
-		context 'edit other user' do
-			before do
-				sign_in user2
-			end
-
-			it 'redirects to root' do
-				get :edit, id: user.id
-
-				expect(response).not_to be_success
-				expect(response).to have_http_status(302)
-				expect(assigns(:user)).to eq user
-			end	
-		end
-	end
+      it 'is not allowed to view user #show' do
+        get :show, params: {id: user.id}
+        expect(response).to have_http_status(302)
+      end
+    end
+  end
 end
