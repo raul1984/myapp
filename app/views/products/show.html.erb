@@ -22,6 +22,13 @@
         <%= image_tag(@product.image_url, class: "img-responsive") %>
       </p>
     </div>
+
+    <!-- Stripe Checkout -->
+    <%= form_tag "/payments/create" do %>
+    <%= render partial: "shared/stripe_checkout_button" %>
+    <% end %>
+
+    <br>
   
   </div>
   <%= render "new_comment" %>
