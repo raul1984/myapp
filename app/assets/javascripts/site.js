@@ -1,5 +1,4 @@
-$(document).on("turbolinks:load", function () {
-  $(".image-zoom").elevateZoom({zoomWindowPosition: 10});
+var refreshRating = function () {
   $(".rating").raty( { path: '/assets', scoreName: 'comment[rating]' });
   $(".rated").raty({ path: "/assets",
     readOnly: true,
@@ -7,8 +6,13 @@ $(document).on("turbolinks:load", function () {
       return $(this).attr("data-score");
     }
   });
-});
+};
 
-$(".enable-review").click( function() {
+$(document).on("turbolinks:load", function () {
+  refreshRating();
+  
+  $(".image-zoom").elevateZoom({zoomWindowPosition: 10});
+  $(".enable-review").click( function() {
     $(".review-container").show();
   });
+});
