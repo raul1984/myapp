@@ -78,5 +78,6 @@ gem 'will_paginate', '~> 3.1.0'
 # Payments Processing with Stripe
 gem 'stripe'
 
-
+#memchaching
+gem 'dalli'
 
