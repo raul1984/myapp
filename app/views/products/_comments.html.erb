@@ -2,7 +2,8 @@
     <% @comments.each do |comment| %>
         <%= render partial: comment %>
     <% end %>
-    <div class="apple_pagination">
+    <!-- render page links in the view: -->
+	<div class="apple_pagination">
       <%= will_paginate @comments %>
     </div>
 </div>
