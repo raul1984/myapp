@@ -6,7 +6,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 product-box">
-      <% cache @product do %>
+    <% cache (cache_key_for_products) do %>
       <p class="product-name">
         <%= @product.name %>
       </p>
