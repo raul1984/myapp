@@ -81,3 +81,5 @@ gem 'stripe'
 #memchaching
 gem 'dalli'
 
+#Redis caching method
+gem 'redis-rails'
