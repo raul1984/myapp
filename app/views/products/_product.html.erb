@@ -1,5 +1,5 @@
-<% cache (cache_key_for_products) do %>
-  <div class="col-sm-6 col-md-4 col-lg-4 product-length">
+ <div class="col-sm-6 col-md-4 col-lg-4 product-length">
+  <% cache product do %>
     <%= image_tag(product.image_url, class: "img-responsive") %>
     <h3><strong><%= product.name %></strong></h3>
     <p><%= product.description %></p>
@@ -14,5 +14,6 @@
       <i class="glyphicon glyphicon-eye-open"></i> Details
       <% end %>
     <% end %>
+    <% end %><!--/cache --
   </div><!-- /col -->
-<% end %><!--/cache -->
+>
