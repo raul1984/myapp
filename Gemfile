@@ -85,3 +85,6 @@ gem 'dalli'
 #add redis caching
 gem 'redis-rails'
 
+
+gem 'newrelic_rpm'
+
