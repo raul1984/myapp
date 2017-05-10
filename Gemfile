@@ -59,7 +59,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'newrelic_rpm'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,5 +82,4 @@ gem 'stripe'
 #memchaching
 gem 'dalli'
 
-#Redis caching method
-gem 'redis-rails'
+
