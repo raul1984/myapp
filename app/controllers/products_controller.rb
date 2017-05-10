@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show #this matches app/views/products/show.html.erb
     @comments = @product.comments.order("created_at DESC").paginate(:page =>params[:page], :per_page=>3)
- 
+    @product.viewed!
   end
 
   # GET /products/new
