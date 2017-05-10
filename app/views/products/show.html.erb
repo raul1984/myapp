@@ -6,6 +6,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-8 product-box">
+    <% cache @product do %>
       <p class="product-name">
         <%= @product.name %>
       </p>
@@ -33,7 +34,7 @@
 
       
     <br>
-  
+     <% end %>
   </div>
   <%= render "new_comment" %>
   <%= render "comments" %>
