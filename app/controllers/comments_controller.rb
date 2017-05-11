@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
   before_filter :authorize_admin, only: [:destroy]
   def create
     @product = Product.find(params[:product_id])
+    @user = current_user
     @comment = @product.comments.new(comment_params)
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        ProductChannel.broadcast_to @product.id, comment: CommentsController.render(partial: 'comments/comment', locals: {comment: @comment, current_user: current_user}), average_rating: @product.average_rating
-        #format.html { redirect_to @product, notice: 'Your review was created successfully.' }
+        format.html { redirect_to @product, notice: 'Your review was created successfully.' }
         format.json { render :show, status: :created, location: @product }
         format.js
       else
