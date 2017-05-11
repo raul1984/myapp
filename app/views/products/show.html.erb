@@ -4,7 +4,7 @@
 
 <div class="container product-show-wrapper">
 
-  <div class="row">
+  <div class="row" data-product-id="<%= @product.id %>">
     <div class="col-xs-12 col-sm-8 product-box">
     <% cache @product do %>
       <p class="product-name">
