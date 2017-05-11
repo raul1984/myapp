@@ -114,3 +114,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://deliciasdelajara.herokuapp.com' }
   config.action_mailer.asset_host = 'https://deliciasdelajara.herokuapp.com'
 end
+
+#ActionCable setup
+config.web_socket_server_url = "wss://deliciasdelajara.herokuapp.com/cable"
+config.action_cable.allowed_request_origins = ['https://deliciasdelajara.herokuapp.com', 'http://deliciasdelajara.herokuapp.com']
+end
