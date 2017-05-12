@@ -1,4 +1,5 @@
 <div class="container top-page">
+<<<<<<< HEAD
 
 
   <h1>Product details</h1>
@@ -9,6 +10,17 @@
         <h4>Name</h4>
       </font>
       <p>
+=======
+
+<p id="notice"><%= notice %></p>
+
+<div class="container product-show-wrapper">
+
+  <div class="row" data-product-id="<%= @product.id %>">
+    <div class="col-xs-12 col-sm-8 product-box">
+    <% cache @product do %>
+      <p class="product-name">
+>>>>>>> master
         <%= @product.name %>
       </p>
 
@@ -47,6 +59,7 @@
       <hr>
       <p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> 
       </p>
+<<<<<<< HEAD
     </div>
     <div class="col-xs-12 col-sm-6">
       <%= image_tag(@product.image_url, class: "img-thumbnail img-responsive img-rounded")%>  
@@ -70,3 +83,35 @@
   <% end %>
   <%= link_to 'Back', products_path %>
 </div>
+=======
+  
+    <div class="col-xs-12 col-sm-4">
+      <p class="product-image">
+        <p>Average Rating: <div id="average-rating" class="rated" data-score="<%= @product.average_rating %>"></div> </p>
+        <p>
+          Views: <%= @product.views %>
+        </p>
+        <%= image_tag(@product.image_url, class: "img-responsive detail img-zoom", data_zoom_image: "@product.image_url") %>
+      </p>
+    </div>
+
+    <!-- Stripe Checkout -->
+    <%= form_tag "/payments/create" do %>
+    <!-- making product_id accessible: this enables payments controller to access product-->
+    <%= hidden_field_tag(:product_id, @product.id) %>
+    <%= render partial: "shared/stripe_checkout_button" %>
+    <% end %>
+
+      
+    <br>
+     <% end %>
+  </div>
+  <%= render "new_comment" %>
+  <div class="alert alert-info" style="display:none" role="alert">A new comment was posted!</div>
+  <%= render "comments" %>
+
+</div>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+>>>>>>> master

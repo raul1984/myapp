@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+gem 'turbolinks', '~> 5.0.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -39,6 +39,10 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
+  gem 'factory_girl_rails', '~> 4.0'
+
 end
 
 group :development do
@@ -48,10 +52,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #brakeman security scanner
+  gem "brakeman", :require => false
 end
 
 group :production do
   gem 'pg'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -68,8 +76,15 @@ gem 'cancancan', '~> 1.10'
 #add pagination for comments
 gem 'will_paginate', '~> 3.1.0'
 
+# Payments Processing with Stripe
+gem 'stripe'
+
+#memchaching
+gem 'dalli'
+
+#add redis caching
+gem 'redis-rails'
 
 
-
-
+gem 'newrelic_rpm'
 

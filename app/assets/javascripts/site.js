@@ -1,14 +1,14 @@
-$(document).on("turbolinks:load", function () {
-  $(".rating").raty( { path: '/assets', scoreName: 'comment[rating]' });
-  $(".rated").raty({ path: "/assets",
-    readOnly: true,
-    score: function() {
-      return $(this).attr("data-score");
-    }
-  });
+var refreshRating = function() {
+    $('.rating').raty( { path: '/assets', scoreName: 'comment[rating]' });
+    $('.rated').raty({ path: '/assets',
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        }
+    });
+};
 
-  $(".enable-review").click( function() {
-    $(".review-container").show();
-  });
-
+$(document).on('turbolinks:load', function() {
+  refreshRating();
+  $('.img-zoom').elevateZoom({zoomType: "lens", lensShape: "round", lensSize: 300, scrollZoom: true, lensFadeIn: 500, lensFadeOut: 500});
 });

@@ -51,6 +51,15 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store,
+                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"],
+                     :failover => true,
+                     :socket_timeout => 1.5,
+                     :socket_failure_delay => 0.2,
+                     :down_retry_delay => 60
+                    }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
@@ -103,4 +112,10 @@ Rails.application.configure do
   }
   
   config.action_mailer.default_url_options = { host: 'https://deliciasdelajara.herokuapp.com' }
+  config.action_mailer.asset_host = 'https://deliciasdelajara.herokuapp.com'
+
+
+#ActionCable setup
+config.web_socket_server_url = "wss://deliciasdelajara.herokuapp.com/cable"
+config.action_cable.allowed_request_origins = ['https://deliciasdelajara.herokuapp.com', 'http://deliciasdelajara.herokuapp.com']
 end
