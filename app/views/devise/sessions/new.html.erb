@@ -1,32 +1,29 @@
-<div class="container top-page">
-  <h1>Log in</h1>
+<div class="row top-page">
+  <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field login-field">
+        <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Email" %>
+      </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="row top-page">
-      <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4">
-        <div class="form-group">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Enter Email" %>
-        </div>
+      <div class="field login-field">
+        <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+      </div>
 
-        <div class="form-group">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Enter Password" %>
-        </div>
+      <% if devise_mapping.rememberable? -%>
+        <span>
+          <%= f.check_box :remember_me %>
+        </span>
+        <span class="remeber-label">
+          <%= f.label :remember_me %>
+        </span>
+      <% end -%>
 
-        <% if devise_mapping.rememberable? -%>
-          <div class="form group">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        <% end -%>
-
-        <div class="form-group">
-          <%= f.submit "Log in", class: "btn btn-default" %>
-        </div>
-      <% end %>
-
+      <div class="actions login-actions">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+    <div class="form-links">
       <%= render "devise/shared/links" %>
     </div>
-  </div>
-</div>  
+  </div> <!-- End col -->
+</div> <!-- End row -->

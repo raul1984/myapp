@@ -1,57 +1,191 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-#product_index { height: 600px; }
-.btn-details { 
-	background-color: #ffb2b2;
-	color: red;
-	margin: 1px red;
-	&:hover{
-		background-color: red;
-		color: #ffffff;
-	}
-<<<<<<< HEAD
-=======
+// INDEX PAGE
+.display-product {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 5px;
+  background-color: #E5E5E5;
+  border-radius: 7px;
 }
-.product-length {
-  margin-top:3.5em
->>>>>>> master
+.product-description {
+  padding: 15px;
 }
-
-.apple_pagination {
-  background: #f1f1f1;
-  border: 1px solid #e5e5e5;
+.product-name {
   text-align: center;
-  padding: 1em;
-  cursor: default; 
-}
-.apple_pagination a, .apple_pagination span {
-  padding: 0.2em 0.3em; 
-}
-.apple_pagination .disabled {
-    color: #aaaaaa; 
-}
-.apple_pagination .current {
-  font-style: normal;
   font-weight: bold;
-  background-color: #bebebe;
-  display: inline-block;
-  width: 1.4em;
-  height: 1.4em;
-  line-height: 1.5;
-  -moz-border-radius: 1em;
-  -webkit-border-radius: 1em;
-  border-radius: 1em;
-  text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; 
+  font-size: 1.2em;
+  text-transform:uppercase;
 }
-.apple_pagination a {
+.product-img {
+  display: block;
+  margin: auto;
+  position: relative;
+  max-height: 300px;
+}
+.divider {
+  color: #625F5F;
+  background-color: #625F5F;
+  height: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0;
+}
+.product-price {
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #21B573;
+}
+.display-product .product-links a {
+  color: #FFF;
+  background-color: #E27575;
+  box-shadow: 1px 1px 5px #B6B6B6;
+  border-radius: 3px;
+  text-shadow: 1px 1px 1px #9E3F3F;
+  cursor: pointer;
+  margin: 3px;
+}
+.display-product .product-links a:hover {
+  text-shadow: 1px 1px 1px #625F5F;
+}
+.create-product {
+  padding-top: 40px;
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1.1em;
+  float: right;
+}
+.create-product a {
+  padding: 5px;
+}
+.create-product a:hover {
+  color: #111;
+  font-size: 1.2em;
   text-decoration: none;
-  color: black; 
+  background-color: #FFF;
+  transition: color, background-color 600ms;
+  -webkit-transition: color, background-color 600ms;
 }
-.apple_pagination a:hover, .apple_pagination a:focus {
-  text-decoration: underline; 
+@media (min-width: 992px) {
+  .row > .col-md-3:nth-child(4n+1) {
+    clear: left;
+  }
 }
 
+// PRODUCT FORM
+#product-form {
+  text-align: center;
+  width: 100%;
+  color: #888;
+}
+#product-form form {
+  background: #E5E5E5;
+  display: inline-block;
+  margin: auto;
+  padding: 30px;
+  border-radius: 5px;
+}
+.form-button input {
+  background: #E27575;
+  border: none;
+  padding: 10px 25px 10px 25px;
+  color: #FFF;
+  box-shadow: 1px 1px 5px #B6B6B6;
+  border-radius: 3px;
+  text-shadow: 1px 1px 1px #9E3F3F;
+  cursor: pointer;
+}
+.form-button input:hover {
+  background: #CF7A7A
+}
+.form-text-field {
+  border: 1px solid #DADADA;
+  color: #888;
+  height: 30px;
+  margin-bottom: 16px;
+  margin-right: 6px;
+  margin-top: 2px;
+  outline: 0 none;
+  padding: 3px 3px 3px 5px;
+  width: 100%;
+  font-size: 12px;
+  line-height:15px;
+  box-shadow: inset 0px 1px 4px #ECECEC;
+  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+  -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.form-textarea {
+  border: 1px solid #DADADA;
+  color: #888;
+  margin-bottom: 16px;
+  margin-right: 6px;
+  margin-top: 2px;
+  outline: 0 none;
+  padding: 3px 3px 3px 5px;
+  width: 100%;
+  min-width: 250px;
+  line-height:25px;
+  font-size: 12px;
+  box-shadow: inset 0px 1px 4px #ECECEC;
+  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+  -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+}
+.product-links {
+  text-align: center;
+  margin: 5px;
+}
+.product-links a {
+  font-size: 1.1em;
+  padding: 5px;
+}
+.product-links a:hover {
+  color: #111;
+  font-size: 1.2em;
+  text-decoration: none;
+  background-color: #FFF;
+  transition: color, background-color 600ms;
+  -webkit-transition: color, background-color 600ms;
+}
 
+// SHOW PAGE
+.show {
+  max-width: 400px;
+  margin: auto;
+  padding-top: 40px;
+}
+.show-product p {
+  font-size: 1.1em;
+  // line brak
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+}
+.show-product {
+  background-color: #E5E5E5;
+  border-radius: 5px;
+  padding: 30px;
+}
+.description {
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 5px;
+}
+.show-product-img {
+  padding-bottom: 20px;
+}
+.show-product-link .btn-primary{
+  color: #FFF;
+  font-size: 1.1em;
+}
+.show-product-link a:hover {
+  font-size: 1.1em;
+}
+.show-product-price {
+  padding-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #21B573;
+}
 

@@ -9,24 +9,17 @@ class UserMailer < ApplicationMailer
   end
 
    def welcome(user)
-    @appname = "Delicias de la Jara"
-    mail( :to => user.email,
-          :subject => "Welcome to #{@appname}!")
+     @user = user
+    mail(:to => user.email,
+         :subject => "¡Bienvenidos a Delicias de la Jara!")
   end
 
-  def order_complete(user, product)
+   def successful_payment(user, product)
     @user = user
     @product = product
-    mail(to: @user.email, subject: 'Thank you for your order!')
+    mail(:to => user.email,
+        :subject => "Confirmation of payment #{product.name}")
   end
-  
-  def thank_you
-    @name = params[:name]
-    @email = params[:email]
-    @message = params[:message]
-    UserMailer.contact_form(@email, @name, @message).deliver_now
-  end
-
 end
 
 

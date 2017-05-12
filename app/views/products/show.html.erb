@@ -1,117 +1,70 @@
-<div class="container top-page">
-<<<<<<< HEAD
-
-
-  <h1>Product details</h1>
-  <hr>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <font color="red">
-        <h4>Name</h4>
-      </font>
-      <p>
-=======
-
-<p id="notice"><%= notice %></p>
-
-<div class="container product-show-wrapper">
-
+<div class="container">
   <div class="row" data-product-id="<%= @product.id %>">
-    <div class="col-xs-12 col-sm-8 product-box">
-    <% cache @product do %>
-      <p class="product-name">
->>>>>>> master
+    <div class="col-xs-12 col-sm-6 col-md-6 show-product-img">
+    <!-- <% cache @product do %> -->
+      <% if @product.image_url.present? %>
+        <%= image_tag(@product.image_url, data_zoom_image: "@product.image_url", class: "img-zoom img-responsive product-img") %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 description">
+      <p>
+        <strong>Name:</strong>
         <%= @product.name %>
       </p>
 
-     <font color= "red">
-       <h4>Description</h4>
-     </font>
-
-     <p>
-       <%= @product.description %>
-     </p>
-
-     <!--<font color= "red">
-        <h3>Image Url</h3>
-     </font>
-     <h4>
-       <%= @product.image_url %>
-     </h4>-->
-  
-
-      <font color= "red">
-        <h4>Color</h4>
-      </font>
+      <p>
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </p>
 
       <p>
+        <strong>Color:</strong>
         <%= @product.color %>
       </p>
 
-      <font color= "red">
-        <h4>Price</h4>
-      </font>
-
+      <p class="show-product-price">
+        <strong>Price:</strong>
+        <%= @product.price %> &euro;
+      </p>
+      <p>Average Rating: <span class="rated" id="average-rating" data-score="<%= @product.average_rating %>"></span> </p>
       <p>
-        <strong><%= @product.price %> € </strong>
+        Highest Rating:
+        <span class="rated" id="highest-rating" data-score="<%= @product.highest_rating_comment.try(:rating) %>"></span>
+        </br>
+        <strong>Comment:</strong> <%= @product.highest_rating_comment.try(:body) %>
       </p>
-      <br>
-      <hr>
-      <p>Average Rating: <div class="rated" data-score="<%= @product.average_rating %>"></div> 
-      </p>
-<<<<<<< HEAD
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= image_tag(@product.image_url, class: "img-thumbnail img-responsive img-rounded")%>  
-      <br>
-      <div id="add-reviews">
-        <%= render 'new_comment' %>
+      <div>
+        <%= form_tag "/payments/create" do %>
+          <%= render partial: "shared/stripe_checkout_button" %>
+        <% end %>
+      </div>
+    </br>
+      <div class="show-product-link">
+        <%= link_to ' Back', products_path, class: 'glyphicon glyphicon-arrow-left btn btn-primary', role: 'button'%>
+        <% if signed_in? && current_user.admin? %>
+        <%= link_to ' Edit', edit_product_path(@product), class: 'glyphicon glyphicon-edit btn btn-primary', role: 'button' %>
+        <% end %>
+    <!-- <% end %> -->
       </div>
     </div>
   </div>
-  <div class="container">
+</br>
   <div class="row">
-    <div class="col-xs-12">
-      <div id="ratings">
-        <%= render 'comments' %>
+    <div class="alert alert-info" style="display:none" role="alert">A new comment was posted!</div>
+    <% if signed_in? %>
+    <div class="col-xs-12 col-sm-5 col-md-5 comments">
+      <%= render partial: "new_comment", locals: {comment: @comment} %>
+    </div>
+    <div class="col-xs-0 col-sm-1 col-md-1 comments"></div>
+    <% end %>
+    <div class="col-xs-12 col-sm-6 col-md-6 comments">
+      <%= render partial: "comments", locals: {comment: @comment} %>
+      <div class="apple_pagination">
+          <div class="apple_pagination page_entries">
+            <%= page_entries_info @comments %>
+          </div>
+          <%= will_paginate @comments, :container => false %>
       </div>
     </div>
   </div>
-  </div>
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_product_path(@product) %> |
-  <% end %>
-  <%= link_to 'Back', products_path %>
 </div>
-=======
-  
-    <div class="col-xs-12 col-sm-4">
-      <p class="product-image">
-        <p>Average Rating: <div id="average-rating" class="rated" data-score="<%= @product.average_rating %>"></div> </p>
-        <p>
-          Views: <%= @product.views %>
-        </p>
-        <%= image_tag(@product.image_url, class: "img-responsive detail img-zoom", data_zoom_image: "@product.image_url") %>
-      </p>
-    </div>
-
-    <!-- Stripe Checkout -->
-    <%= form_tag "/payments/create" do %>
-    <!-- making product_id accessible: this enables payments controller to access product-->
-    <%= hidden_field_tag(:product_id, @product.id) %>
-    <%= render partial: "shared/stripe_checkout_button" %>
-    <% end %>
-
-      
-    <br>
-     <% end %>
-  </div>
-  <%= render "new_comment" %>
-  <div class="alert alert-info" style="display:none" role="alert">A new comment was posted!</div>
-  <%= render "comments" %>
-
-</div>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
->>>>>>> master

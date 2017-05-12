@@ -1,39 +1,25 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index #this matches app/views/products/index.html.erb
-<<<<<<< HEAD
-    if Rails.env.development?
-=======
-      if Rails.env.development?
->>>>>>> master
-      if params[:q]
-        search_term = params[:q]
-        @products = Product.where("name LIKE ?", "%#{search_term}%")
-      else
-        @products = Product.all
-      end 
-    else
-      if params[:q]
-        search_term = params[:q]
-        @products = Product.where("name ilike ?", "%#{search_term}%")
-      else
-        @products = Product.all
+    if params[:q]
+      search_term = params[:q]
+      @products = Product.search(search_term)
+      if @products.blank?
+        flash[:alert] = 'There are no results that match your search'
       end
+    else
+      @products = Product.all
     end
-    @products_featured = Product.limit(3)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show #this matches app/views/products/show.html.erb
     @comments = @product.comments.order("created_at DESC").paginate(:page =>params[:page], :per_page=>3)
-<<<<<<< HEAD
-=======
-    @product.viewed!
->>>>>>> master
   end
 
   # GET /products/new
@@ -49,6 +35,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

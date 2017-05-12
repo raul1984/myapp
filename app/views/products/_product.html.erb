@@ -1,21 +1,29 @@
-  <% cache product do %>
  <div class="col-sm-6 col-md-4 col-lg-4 product-length">
-    <%= image_tag(product.image_url, class: "img-responsive") %>
-    <h3><strong><%= product.name %></strong></h3>
-    <p><%= product.description %></p>
-    <p><%= product.color %></p>
-    <p><strong><%= product.price %> €</strong></p>
-    <% if signed_in? && current_user.admin? %>
-      <p><%= link_to 'Show', product %> |<%= link_to 'Edit', edit_product_path(product) %> | <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-  	 </p>
-    <% else %>
-    <br>
-      <%= link_to product, class: "btn btn-default" do %> 
-      <i class="glyphicon glyphicon-eye-open"></i> Details
-      <% end %>
+    <div class="display-product">
+    <% cache product do %>
+    <% if product.image_url.present? %>
+      <%= link_to  image_tag(product.image_url, class: "img-responsive product-img"), product %>
     <% end %>
-   
-  </div><!-- /col -->
-  <% end %>
-  
+
+    <div class="product-description">
+      <p class="product-name"><%= product.name %></p>
+      <p>Description: <%= product.description %></p>
+      <p>Color: <%= product.color %></p>
+    </div>
+
+    <hr class="divider">
+    <p class="product-price">Price: <%= product.price %> &euro;</p>
+
+    <div class="product-links">
+      <span><%= link_to 'Show', product %></span>
+      <% if current_user && current_user.admin? %>
+        <span><%= link_to 'Edit', edit_product_path(product) %></span>
+        <span><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      <% end %>
+    <% end %><!-- end cache -->
+    </div>
+  </div>
+</div> <!-- /col -->
+    
+
   

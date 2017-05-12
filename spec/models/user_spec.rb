@@ -1,23 +1,16 @@
-require 'rails_helper'
-describe User do
-	context "when creating user" do
-		it "user cannot be created without an email" do
-			@user = User.new(password: "123456")
-			expect(@user).not_to be_valid
-		end
+require "rails_helper"
 
-		it "created with a not valid formated email" do
-			@user = User.new(email: "thisisnotavalidemail", password: "123456")
-			expect(@user).to_not be_valid	
-		end
+describe User, :type => :model do
+  it "should not validate users without an email address" do
+    @user = FactoryGirl.build(:user, email: "not_an_email")
+    expect(@user).to_not be_valid
+  end
 
-		it "password not supplied" do
-			@user = User.new(email: "test@test.com")
-			expect(@user).to_not be_valid
-		end
 
-		it "all information is valid" do
-			expect(User.new(email: "test@test.com", password: "123456")).to be_valid
-		end
-	end
+  it "is not valid" do
+    @user = FactoryGirl.build(:user, email: "not_an_email")
+    expect(User.new(password:"")).not_to be_valid
+  end
+
+
 end

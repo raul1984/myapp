@@ -1,298 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-<<<<<<< HEAD
-  <title>BikeBerlin</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Indie+Flower:400,700' %>
-  <%= javascript_include_tag 'application' %>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <%= favicon_link_tag 'favicon.png' %>
-=======
-  <title>Delicias de la Jara</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <%= favicon_link_tag 'favicon.png' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:400,700' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
->>>>>>> master
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-</head>
+  <head>
+    <title>Delicias de la Jara</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
 
-<body>
-      
-  <div id="wrap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:400,700' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
 
-  <!-- ==================== -->
-  <!-- Navigation comes now -->
-  <!-- ==================== -->
-  <!-- Collect the nav links, forms, and other content for toggling -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <body>
+
+    <nav class="navbar navbar-default navbar-style">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-<<<<<<< HEAD
-          <a class="navbar-brand brand page-scroll" href="#page-top"><span class="logo">BB</span></a>
-=======
-          <a class="navbar-brand brand page-scroll" href="#page-top"><span class="logo">Delicias de la Jara</span></a>
->>>>>>> master
-          <span id="search-box-xs">
-            <%= form_tag("/products", method: "get") do %>
-              <%= label_tag(:q, "Search for:", class: "hidden") %>
-              <%= text_field_tag(:q, "", placeholder: "  Search", class: "search-xs") %>
-              <%= button_tag(type: 'submit') do %>
-                <span class="glyphicon glyphicon-search icon-search"></span>
-              <% end %>
-            <% end %>
-          </span>
-        </div> 
-        
-        <!-- /.nav-header -->
+          <%= link_to 'Delicias de la Jara', root_path, class: 'navbar-brand' %>
+        </div><!-- Collect the nav links, forms, and other content for toggling -->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-            <li id="main-nav-home"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
-              <%= link_to "Home", static_pages_index_path %>
-            </li>
-            <li id="main-nav-shop"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
-              <%= link_to "Shop", products_path %>
-            </li>
-            <li id="main-nav-orders-about"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
-              <%if user_signed_in? %>
-                <%= link_to "Orders" %></li>
-              <% else %>
-                <%= link_to "About", static_pages_about_path %>
-              <% end %>
-            </li>
-            <li id="main-nav-users-contact"><!-- won't display in @media (min-width: 768px) and (max-width: 900px) -->
-              <% if signed_in? && current_user.admin? %>
-                <%= link_to "Users", users_path %>
-              <% else %>
-                <%= link_to "Contact", static_pages_contact_path %>
-              <% end %>
-            </li>
-          
-            <li id="search-box">
+          <ul class="nav navbar-nav navbar-right link-style">
+            <li class="search-form field">
               <%= form_tag("/products", method: "get") do %>
-                <%= label_tag(:q, "Search for:", class: "hidden") %>
-                <%= text_field_tag(:q, "", placeholder: "  Search for bikes", class: "search-xl") %>
-                <%= button_tag(type: 'submit', class: "btn btn-search-color") do %>
-                  <span class="glyphicon glyphicon-search icon-search"></span>
-                <% end %>
+                <!-- <%= label_tag(:q, "Search for:") %> -->
+                <%= text_field_tag(:q, nil, :placeholder => 'Search for a product', class: 'search-field') %>
+                <%= submit_tag("Search", class: 'search-button') %>
               <% end %>
             </li>
-            <li id="sm-login-out">
-              <% if user_signed_in? %>
-                <a>Hello 
-                  <% if current_user.admin? %>
-                  Admin
-                  <% else %>
-                    <% if current_user.first_name.present?%>
-                      <%= current_user.first_name %>
-                    <% else %>
-                      <%= current_user.email %> 
-                    <% end %>
-                  <% end %>
-                </a>          
-              <% end %>
+            <li>
+              <%= link_to 'Home', root_path %>
             </li>
-            <li id="sm-login-out">
-              <% if user_signed_in? %>
-              <a>|</a>
-              <% end %>
+            <li>
+              <%= link_to 'Shop', products_path %>
             </li>
-            <% if user_signed_in? %>
-              <li class="dropdown">
-                <a href="#" id="dropskills" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
-                  <i class="glyphicon glyphicon-cog setting-comp"></i>
-                  <span class="setting-mob">Settings</span>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" arialabelledby="settings">
-                  <li><%= link_to 'See my profile', user_path(current_user) %></li>
-                  <li><%= link_to 'Edit my profile', edit_user_path(current_user) %></li>
-                  <li><%= link_to'My login details', edit_registration_path(current_user) %></li>
-                </ul>
-              </li>    
-            <% else %>
-              <li>
-                <%= link_to('Sign up', new_user_registration_path) %>
-              </li>
-            <% end %>
+            <li>
+              <%= link_to 'About', static_pages_about_path %>
+            </li>
+            <li>
+              <%= link_to 'Contact', static_pages_contact_path %>
+            </li>
 
-            <!-- will display only in @media (min-width: 768px) and (max-width: 900px) -->
-            <li class= "dropdown" id="btn-menu">
-              <a id="dropmenu" class="page-scroll" href="#" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">MENU <span class="caret"></span></a>
-              <ul class="dropdown-menu" arialabelledby="dropmenu">
-                <li>
-                  <%= link_to "Home", static_pages_index_path %>
-                </li>
-                <li>
-                  <%= link_to "Shop", products_path %>
-                </li>
-                <%if user_signed_in? %>
-                  <li><%= link_to "Orders" %></li>
-                <% else %>
-                  <li><%= link_to "About", static_pages_about_path %></li>
-                <% end %>
-                <li>
-                  <% if signed_in? && current_user.admin? %>
-                    <%= link_to "Users", users_path %>
-                  <% else %>
-                    <%= link_to "Contact", static_pages_contact_path %>
-                  <% end %>
-                </li>
-              </ul>
-            </li>
-            <!-- /will display only in @media (min-width: 768px) and (max-width: 900px) -->
-=======
-            <li>
-              <%= link_to "Home", static_pages_index_path %>
-            </li>
-            <li>
-              <%= link_to "Shop", products_path %>
-            </li>
-            <%if user_signed_in? %>
-              <li><%= link_to "Orders" %></li>
-            <% else %>
-              <li>
-                <%= link_to "About", static_pages_about_path %>
-              </li>
-            <% end %>
-            <li>
-              <%= link_to "Contact", static_pages_contact_path %>
-            </li>
-          
-            <li id="search-box">
-              <%= form_tag("/products", method: "get") do %>
-                <%= label_tag(:q, "Search for:", class: "hidden") %>
-                <%= text_field_tag(:q, "", placeholder: "  Search ", class: "search-xl") %>
-                <%= button_tag(type: 'submit', class: "btn btn-search-color") do %>
-                  <span class="glyphicon glyphicon-search icon-search"></span>
-                <% end %>
-              <% end %>
-            </li>
-            <li id="sm-login-out">
-              <% if user_signed_in? %>
-                <a>Signed in as...
-                  <% if current_user.first_name.present?%>
-                    <%= current_user.first_name %>
-                  <% else %>
-                    <%= current_user.email %> 
-                  <% end %>
-                </a>          
-              <% end %>
-            </li>
-            <li id="sm-login-out">
-              <% if user_signed_in? %>
-              <a>|</a>
-              <% end %>
-            </li>
             <% if user_signed_in? %>
-              <li class="dropdown">
-                <a href="#" id="dropskills" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
-                  <i class="glyphicon glyphicon-cog setting-comp"></i>
-                  <span class="setting-mob">Settings</span>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" arialabelledby="settings">
-                  <li><%= link_to 'See my profile', user_path(current_user) %></li>
-                  <li><%= link_to 'Edit my profile', edit_user_path(current_user) %></li>
-                  <li><%= link_to'My login details', edit_registration_path(current_user) %></li>
-                </ul>
-              </li>    
+              <li>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+              </li>
+              <li>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-user dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= link_to(current_user.first_name, users_path) %> <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to('Orders', orders_path) %></li>
+                    <li><%= link_to('Profile', users_path) %></li>
+                    <li><%= link_to('Change Passowrd', edit_user_registration_path) %></li>
+                  </ul>
+                </div>
+              </li>
             <% else %>
               <li>
-                <%= link_to('Sign up', new_user_registration_path) %>
+                <%= link_to('Login/Sign up', new_user_session_path) %>
               </li>
             <% end %>
->>>>>>> master
-            <li id="sm-login-out">
-              <div class="btn btn-default btn-login">
-                <% if user_signed_in? %>
-                 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-                <% else%>
-                  <%= link_to('Login', new_user_session_path) %>
-                <% end %> 
-              </div>
-            </li>
           </ul>
-<<<<<<< HEAD
-      
-=======
-        </div>
->>>>>>> master
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-fluid -->
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
     </nav>
-    <!-- /.navbar -->
-    <!-- /////////////// -->
-    <!-- Navigation ends -->
-    <!-- /////////////// -->
 
-    <!-- alerts and notices -->
+    <div class="page-wrap">
     
-    <%if notice%>
-      <p id="notice" class="alert top-page alert-info center"><%= notice %></p>
-    <% end %>
-    <% if alert%>
-      <p id ="alert" class="alert top-page alert-danger center"><%= alert %></p>
-    <% end %>
+      <div class="container-fluid">
+        <% if notice %>
+          <div class="alert alert-success" role="alert"><%= notice %></div>
+        <% elsif alert %>
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+        <% end %>
 
-    <!--/ alerts and notices -->
+        <%= yield %>
+      </div>
 
-    <%= yield %>
+      <div class="push"></div>
+    </div>
 
-
- 
-
-    <div class="container top-page xs-login-out">
-      <div class="row">
-        <div class="center">
-          <% if user_signed_in? %>
-<<<<<<< HEAD
-            <font color="red">Hello
-=======
-            <font color="red">Signed in as...
->>>>>>> master
-              <% if current_user.first_name.present?%>
-                <%= current_user.first_name %>
-              <% else %>
-                <%= current_user.email %> 
-              <% end %>
-            </font>          
-          <% end %>
-        </div>
-        
-        <div class="btn btn-default btn-login col-xs-6" style="margin-left: 25%">
-          <% if user_signed_in? %>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-          <% else%>
-            <%= link_to('Login', new_user_session_path) %>
-          <% end %> 
-        </div><!-- /.btn -->
-      </div><!-- /.row -->
-    </div><!-- /.container login and out for small viewports-->
-  </div><!-- /#wrap -->
-  
-  <footer>
-<<<<<<< HEAD
-    <div class="container copyright">&copy; 2016 Bike Berlin</div>
-=======
-    <div class="container copyright">&copy; 2017 Delicias de la Jara</div>
->>>>>>> master
-  </footer>
-</body>
+    <footer class="site-footer">
+      <p>&copy; 2017 Delicias de la Jara</p>
+    <footer>
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+     
+
+        
+     

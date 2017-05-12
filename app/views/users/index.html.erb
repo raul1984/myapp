@@ -1,43 +1,18 @@
-<div class="container top-page">
-  <!--<p id="notice"><%= notice %></p>-->
+<h3>Hello <%= current_user.first_name %> here you can edit your profile</h3>
 
-  <h1>Listing Users</h1>
-  <div class="row top-page">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      <h4 style="color:red;">First name</h4>
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      <h4 style="color:red;">Last name</h4>
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      <h4 style="color:red;">Email</h4>
-    </div>
-  </div>
-  <div class="row">
-    <% @users.each do |user| %>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <p><%= user.first_name %></p>
+  <div class="col-xs-12 col-sm-6 col-md-3 display-user">
+    <div class="display-product">
+      <div class="product-description">
+        <p class="product-name"><%= @user.first_name %> <%= @user.last_name %></p>
+
       </div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <p><%= user.last_name %></p>
+      <div class="product-links">
+        <span><%= link_to 'Show', current_user %></span>
+        <span><%= link_to 'Edit', edit_user_path(current_user) %></span>
+        <span><%= link_to 'Delete', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </div>
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <p><%= user.email %></p>
-      </div>
-      
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <p><%= link_to 'Edit', edit_user_path(user) %> | <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      </div>
-    <% end %>
-  </div>
-  <br>
-  <div class="row top-page">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      <p class="btn btn-default" style="color: red; background-color: #ffffff; border:1px solid red;"><%= link_to 'New User', new_user_path, :style => "color:red;" %></p>
     </div>
-  </div>
-<<<<<<< HEAD
-</div>
-=======
-</div>
->>>>>>> master
+  </div> <!-- /col -->
+
+
+<!-- <%= link_to 'New User', new_user_path %> -->

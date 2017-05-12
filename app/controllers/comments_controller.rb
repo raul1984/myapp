@@ -1,14 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
-  before_filter :authorize_admin, only: [:destroy]
-<<<<<<< HEAD
   
   def index
-    
+   redirect_to root_path 
   end
 
-=======
->>>>>>> master
+
   def create
     @product = Product.find(params[:product_id])
     @user = current_user
@@ -39,18 +35,5 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:user_id, :body, :rating)
   end
 
-  def authorize_admin
-    return unless !current_user.admin?
-    redirect_to root_path, :alert => "Only admins can delete comments"
-    end
-<<<<<<< HEAD
+end
 
-     def authorize_admin
-    return unless !current_user.admin?
-    redirect_to root_path, :alert => "Only admins can delete comments"
-    end
-end
-  
-=======
-end
->>>>>>> master

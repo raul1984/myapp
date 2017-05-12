@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
 
+  before_action :authenticate_user!
 
-# POST /payments
   def create
     token = params[:stripeToken]
     @product = Product.find(params[:product_id])
@@ -10,14 +10,15 @@ class PaymentsController < ApplicationController
     begin
       charge = Stripe::Charge.create(
         :amount => (@product.price*100).to_i, # amount in cents, again
-        :currency => "usd",
+        :currency => "eur",
         :source => token,
         :description => params[:stripeEmail]
         #:receipt_email => @user.email
       )
 
       if charge.paid
-        Order.create!(product_id: @product.id, user_id: @user.id, total: @product.price)
+        Order.create!(product_id: @product.id, user_id: @user.id, total: @product.price, created_at: Time.now)
+        UserMailer.successful_payment(@user, @product).deliver_now
       end
       
       rescue Stripe::CardError => e

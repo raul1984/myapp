@@ -1,4 +1,34 @@
-<div class="container top-page">
-  <h1>My orders</h1>
-  <p>test orders page</p>
+<header>
+	<h3> <%= current_user.first_name %> this is your order page</h3>
+</header>
+
+<div class="row">
+  <table class="order-table">
+   	<tbody>
+     	<tr>
+        <td><p> DATE </p></td>
+        <td><p> PRODUCT </p></td>
+        <td><p> PRICE </p></td>
+        <td><p> PURCHASER </p></td>
+      </tr>
+    	<% @orders.each do |order| %>
+      <tr>
+       	<td><p> <%= order.created_at %>  </p></td>
+        <td><p> <%= order.product.name %></p></td>
+        <td><p> <%= order.total %> &euro;</p></td>
+        <td><p> <%= order.user.first_name %> <%= order.user.last_name %> </p></td>
+      </tr>
+    	<% end %>
+  	</tbody>
+  </table>
+</div>
+<div class="row">
+	<div class="orders-pagination">
+  	<div class="apple_pagination">
+    	<div class="apple_pagination page_entries">
+      	<%= page_entries_info @orders %>
+      </div>
+      <%= will_paginate @orders, :container => false %>
+  	</div>
+  </div>
 </div>

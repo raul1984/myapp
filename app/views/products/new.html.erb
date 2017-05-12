@@ -1,6 +1,11 @@
-<div class="container top-page">
+<header>
   <h1>New Product</h1>
-
-  <%= render 'shared/form' %>
-
+</header>
+<div class="row">
+  <div id="product-form">
+    <%= render 'form', product: @product %>
+  </div>
+</div>
+<div class="product-links">
+  <%= link_to 'Back', products_path %>
 </div>
