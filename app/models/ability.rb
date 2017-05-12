@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :[:update, :destroy], User
+      can [:update, :destroy], User
     end
   end
 end
