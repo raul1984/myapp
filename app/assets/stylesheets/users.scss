@@ -3,67 +3,76 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .login-form {
-  color: #888;
+  color:white;
   padding: 20px;
   float: none;
   margin: auto;
   top: 40px;
+  font-family: 'Finger Paint', cursive;
+  font-size:0.75em;
+  border-radius:30%;
+  text-align:center;
 }
 .login-form form {
-  background: #FFF;
+  background:  #285e17;
   margin: auto;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 5%;
 }
 .login-actions input {
-  background: #449D44;
+  background: #285e17;
   border: none;
   padding: 10px 25px 10px 25px;
   color: #FFF;
-  box-shadow: 1px 1px 5px #B6B6B6;
-  border-radius: 3px;
+  font-family: 'Finger Paint', cursive;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 5px;
   text-shadow: 1px 1px 1px #4f4e4d;
   cursor: pointer;
   width: 100%;
-}
+
+  }
 .login-actions input:hover {
-  background: #8BC98B;
+  background: black;
 }
 .login-field input {
-  border: 1px solid #DADADA;
-  color: #888;
+  border: 1px solid;
+  border-radius: 5px;
+  color: black;
   height: 40px;
   outline: 0 none;
   padding: 3px 3px 3px 5px;
   width: 100%;
   font-size: 12px;
   line-height:15px;
-  box-shadow: inset 0px 1px 4px #ECECEC;
-  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-  -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+  font-family: 'Finger Paint', cursive;
+  
 }
 .login-field label {
   margin: none;
+  background:#285e17
 }
 .log-links {
   text-align: center;
   margin: 15px;
+  font-family: 'Finger Paint', cursive;
+  margin-bottom:1px;
 }
 .log-links a {
   color: #FFF;
-  background-color: #484848;
-  box-shadow: 1px 1px 5px #B6B6B6;
-  border-radius: 3px;
+  background-color: green;
+  border-radius: 10%;
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1.5em;
   padding: 5px;
   margin-bottom: 5px;
+  font-family: 'Finger Paint', cursive;
 }
 .log-links a:hover {
-  color: #111;
+  color: white;
   font-size: 1.2em;
   text-decoration: none;
-  background-color: #FFF;
+  background-color: #285e17;
   transition: color, background-color 600ms;
   -webkit-transition: color, background-color 600ms;
   text-shadow: 1px 1px 1px #625F5F;
@@ -75,25 +84,40 @@
 .cancel-account {
   padding-top: 40px;
   text-align: center;
+  font-family: 'Finger Paint', cursive;
+
 }
 .btn-delete-acct {
   margin: 10px;
+  background: #285e17; 
+  font-family: 'Finger Paint', cursive;
 }
 .edit-user-title {
   margin: 0;
   margin-top: 10px;
+   font-family: 'Finger Paint', cursive;
 }
 .display-user {
   float: none;
   margin: auto;
+   font-family: 'Finger Paint', cursive;
 }
 .back-link {
+  margin-top: 50 px;
+  margin-bottom: 50px;
+  display: inline-block;
+   font-family: 'Finger Paint', cursive;
+}
+.back-link a {
   margin-top: 10px;
   margin-bottom: 10px;
   display: inline-block;
+   font-family: 'Finger Paint', cursive;
 }
+
 .back-link a:hover{
   text-decoration: none;
   background: none;
-  color: #000;
+  color: black;
+   font-family: 'Finger Paint', cursive;
 }

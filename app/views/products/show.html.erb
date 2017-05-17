@@ -27,7 +27,6 @@
         Highest Rating:
         <span class="rated" id="highest-rating" data-score="<%= @product.highest_rating_comment.try(:rating) %>"></span>
         </br>
-        <strong>Comment:</strong> <%= @product.highest_rating_comment.try(:body) %>
       </p>
       <div>
         <%= form_tag "/payments/create" do %>

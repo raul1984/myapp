@@ -2,18 +2,19 @@
 .display-product {
   max-width: 300px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5%;
+  margin-bottom:220px;
   padding: 5px;
-  background-color: #E5E5E5;
-  border-radius: 7px;
+  background-color: #fcf7f7;
+  border-radius: 8%;
 }
 .product-description {
-  padding: 15px;
+  padding: 5px;
 }
 .product-name {
   text-align: center;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
   text-transform:uppercase;
 }
 .product-img {
@@ -21,47 +22,45 @@
   margin: auto;
   position: relative;
   max-height: 300px;
+  border-radius:50%;
 }
 .divider {
-  color: #625F5F;
-  background-color: #625F5F;
-  height: 2px;
-  margin-left: 10px;
-  margin-right: 10px;
+  color: #190202;
+  background-color: #190202;
+  height: 5px;
   margin-top: 0;
 }
 .product-price {
   padding-bottom: 10px;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 2em;
   font-weight: bold;
-  color: #21B573;
+  color: #190202;
 }
 .display-product .product-links a {
   color: #FFF;
-  background-color: #E27575;
-  box-shadow: 1px 1px 5px #B6B6B6;
-  border-radius: 3px;
+  background-color: #3a823b;
+  border-radius: 60%;
   text-shadow: 1px 1px 1px #9E3F3F;
   cursor: pointer;
-  margin: 3px;
+  margin: 6px;
 }
 .display-product .product-links a:hover {
-  text-shadow: 1px 1px 1px #625F5F;
+  text-shadow: 1px 1px 1px #3a2e37;
 }
 .create-product {
   padding-top: 40px;
-  color: #111;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 1.1em;
-  float: right;
+  color: black;
+  font-family: 'Finger Paint', cursive;
+  font-size: 1.5em;
+  float: left;
 }
 .create-product a {
   padding: 5px;
 }
 .create-product a:hover {
   color: #111;
-  font-size: 1.2em;
+  font-size: 2em;
   text-decoration: none;
   background-color: #FFF;
   transition: color, background-color 600ms;
@@ -77,31 +76,31 @@
 #product-form {
   text-align: center;
   width: 100%;
-  color: #888;
+  color: #1c0a0a;
 }
 #product-form form {
-  background: #E5E5E5;
+  background: #285e17;
   display: inline-block;
+  font-family: 'Finger Paint', cursive;
+  color:white;
   margin: auto;
-  padding: 30px;
-  border-radius: 5px;
+  padding: 50px;
+  border-radius: 3%;
 }
 .form-button input {
-  background: #E27575;
+  background: black;
   border: none;
   padding: 10px 25px 10px 25px;
-  color: #FFF;
-  box-shadow: 1px 1px 5px #B6B6B6;
-  border-radius: 3px;
-  text-shadow: 1px 1px 1px #9E3F3F;
+  color: white;
+  border-radius: 50%;
   cursor: pointer;
 }
 .form-button input:hover {
-  background: #CF7A7A
+  background:#14ad6b;
 }
 .form-text-field {
-  border: 1px solid #DADADA;
-  color: #888;
+  border: 1px solid;
+  color: black;
   height: 30px;
   margin-bottom: 16px;
   margin-right: 6px;
@@ -109,15 +108,14 @@
   outline: 0 none;
   padding: 3px 3px 3px 5px;
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
   line-height:15px;
-  box-shadow: inset 0px 1px 4px #ECECEC;
-  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-  -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+  border-radius:5px;
+
 }
 .form-textarea {
-  border: 1px solid #DADADA;
-  color: #888;
+  border: 1px solid;
+  color: black;
   margin-bottom: 16px;
   margin-right: 6px;
   margin-top: 2px;
@@ -126,23 +124,26 @@
   width: 100%;
   min-width: 250px;
   line-height:25px;
-  font-size: 12px;
-  box-shadow: inset 0px 1px 4px #ECECEC;
-  -moz-box-shadow: inset 0px 1px 4px #ECECEC;
-  -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+  font-size: 14px;
+  border-radius:5px;
 }
 .product-links {
   text-align: center;
-  margin: 5px;
+  margin: 20px;
 }
 .product-links a {
   font-size: 1.1em;
   padding: 5px;
+  background:#c6f2df;
+  border-radius:50%;
+  color:white;
+  font-family: 'Finger Paint', cursive;
 }
 .product-links a:hover {
   color: #111;
   font-size: 1.2em;
   text-decoration: none;
+  font-family: 'Finger Paint', cursive;
   background-color: #FFF;
   transition: color, background-color 600ms;
   -webkit-transition: color, background-color 600ms;
@@ -152,10 +153,10 @@
 .show {
   max-width: 400px;
   margin: auto;
-  padding-top: 40px;
+  padding-top: 1000px;
 }
 .show-product p {
-  font-size: 1.1em;
+  font-size: 1,5em;
   // line brak
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -163,13 +164,13 @@
   word-break: break-word;
 }
 .show-product {
-  background-color: #E5E5E5;
+  background-color: black;
   border-radius: 5px;
   padding: 30px;
 }
 .description {
   padding: 20px;
-  background-color: #FFF;
+  background-color: #f2ebe3;
   border-radius: 5px;
 }
 .show-product-img {
@@ -178,6 +179,8 @@
 .show-product-link .btn-primary{
   color: #FFF;
   font-size: 1.1em;
+  border-radius:10%;
+  font-family: 'Finger Paint', cursive;
 }
 .show-product-link a:hover {
   font-size: 1.1em;
@@ -186,6 +189,6 @@
   padding-bottom: 10px;
   font-size: 1.2em;
   font-weight: bold;
-  color: #21B573;
+  color: black;
 }
 
